@@ -1,0 +1,26 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "调试tp",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/root/autodl-tmp/project/Practice-main/code/scripts/detector_voting_tp_autothres.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--eval_dataset", "/root/autodl-tmp/project/Practice-main/code/exp_location_single_cp/data/writing_gemma-2b-instruct_rewrite",
+                "--from_pretrained", "/root/autodl-tmp/project/Practice-main/code/scripts/FineTune/ckpt/",
+                "--phi", "FT",
+                "--output_file", "/root/autodl-tmp/project/Practice-main/code/exp_location_single_cp/results/writing_gemma-2b-instruct_rewrite_tokenwise_regen_number_2",
+                "--width", "3",
+                "--thres_regen_number", "2",
+                "--num_subsample", "2",
+                "--train_thres"
+            ]
+                
+        }
+    ]
+}

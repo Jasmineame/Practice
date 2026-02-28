@@ -1,0 +1,66 @@
+2026-02-28 18:22:19.140299: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-02-28 18:22:19.186147: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-02-28 18:22:20.306853: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Note: Environment variable`HF_TOKEN` is set and is the current active token independently from the token you've just configured.
+You are using the default legacy behaviour of the <class 'transformers.models.llama.tokenization_llama_fast.LlamaTokenizerFast'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565 - if you loaded a llama tokenizer from a GGUF file you can ignore this message.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:01<00:03,  1.16s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:02<00:02,  1.18s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:03<00:01,  1.18s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.26it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:03<00:00,  1.07it/s]
+Some parameters are on the meta device because they were offloaded to the cpu.
+Processing samples:   0%|          | 0/100 [00:00<?, ?it/s]Processing samples:   1%|          | 1/100 [03:04<5:04:07, 184.32s/it]Processing samples:   1%|          | 1/100 [06:25<10:36:28, 385.74s/it]
+Traceback (most recent call last):
+  File "/root/autodl-tmp/project/Practice-main/code/scripts/detector_voting_sp_autothres.py", line 82, in <module>
+    rewrite_text = get_regen_samples(sampler, val_data['sampled'][i], args.thres_regen_number)
+  File "/root/autodl-tmp/project/Practice-main/code/scripts/detector_voting_sp_autothres.py", line 22, in get_regen_samples
+    data = sampler.generate_samples(data, batch_size=sampler.args.batch_size)
+  File "/root/autodl-tmp/project/Practice-main/code/scripts/rewrite_machine.py", line 60, in generate_samples
+    sampled_text = self._sample_rewrite_text_from_model(original_text)
+  File "/root/autodl-tmp/project/Practice-main/code/scripts/rewrite_machine.py", line 44, in _sample_rewrite_text_from_model
+    outputs = self.base_model.generate(**all_encoded, do_sample=True, **sampling_kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/transformers/generation/utils.py", line 2250, in generate
+    result = self._sample(
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/transformers/generation/utils.py", line 3241, in _sample
+    outputs = model_forward(**model_inputs, return_dict=True)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/accelerate/hooks.py", line 175, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/transformers/models/mistral/modeling_mistral.py", line 842, in forward
+    outputs = self.model(
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/transformers/models/mistral/modeling_mistral.py", line 566, in forward
+    layer_outputs = decoder_layer(
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/accelerate/hooks.py", line 170, in new_forward
+    args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/accelerate/hooks.py", line 369, in pre_forward
+    return send_to_device(args, self.execution_device), send_to_device(
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 179, in send_to_device
+    {
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 180, in <dictcomp>
+    k: t if k in skip_keys else send_to_device(t, device, non_blocking=non_blocking, skip_keys=skip_keys)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/accelerate/utils/operations.py", line 154, in send_to_device
+    return tensor.to(device, non_blocking=non_blocking)
+KeyboardInterrupt
+Exception ignored in atexit callback: <function shutdown_compile_workers at 0x7f120c729a20>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/_inductor/async_compile.py", line 113, in shutdown_compile_workers
+    pool.shutdown()
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/site-packages/torch/_inductor/compile_worker/subproc_pool.py", line 239, in shutdown
+    self.process.wait(300)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/subprocess.py", line 1222, in wait
+    self._wait(timeout=sigint_timeout)
+  File "/root/autodl-tmp/envs/ada-env/lib/python3.10/subprocess.py", line 1937, in _wait
+    time.sleep(delay)
+KeyboardInterrupt: 
