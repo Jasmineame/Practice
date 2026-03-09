@@ -1,0 +1,7 @@
+data/
+exp_location_single_cp/
+error_log.txt
+writingPrompts.tar.gz
+scripts/__pycache__/
+scripts/Finetune/__pycache__/
+scripts/TrainFree/__pycache__/
